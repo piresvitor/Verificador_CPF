@@ -11,14 +11,14 @@ class ValidaCPF:
 
         #Obtém os 9 primeiros dígitos do CPF para calcular o primeiro dígito verificador.
         cpf_base = self.cpf[:9]
-        digito1 = self.calcula_digitos(cpf_base)
-        digito2 = self.calcula_digitos(cpf_base + digito1)
+        digito1 = self.calcula_digito(cpf_base)
+        digito2 = self.calcula_digito(cpf_base + digito1)
 
         #Compara o CPF original (limpo) com a concatenação da base e os dois dígitos calculados.
         return self.cpf == cpf_base + digito1 + digito2
 
     @staticmethod
-    def calcula_digitos(cpf_parcial):
+    def calcula_digito(cpf_parcial):
         soma = 0
         for indice, digito in enumerate(cpf_parcial):
             soma += int(digito) * (len(cpf_parcial) + 1 - indice) 
